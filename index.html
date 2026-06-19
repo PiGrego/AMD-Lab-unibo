@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMD Lab | Conference Hub - University of Bologna</title>
+    <style>
+        :root {
+            --bg-color: #f1f5f9;
+            --surface-color: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --accent-color: #4f46e5; /* Modern Indigo */
+            --accent-light: #e0e7ff;
+            --border-color: #0f172a;
+            --card-shadow: 4px 4px 0px var(--border-color);
+            --work-accent: #0e9f6e; /* Mint/Green for presentation highlights */
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #0f172a;
+                --surface-color: #1e293b;
+                --text-primary: #f8fafc;
+                --text-secondary: #94a3b8;
+                --accent-color: #818cf8;
+                --accent-light: rgba(129, 140, 248, 0.15);
+                --border-color: #f8fafc;
+                --card-shadow: 4px 4px 0px var(--border-color);
+            }
+        }
+
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background-color: var(--bg-color);
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.2' fill='%239ca3af' fill-opacity='0.3'/%3E%3C/svg%3E");
+            color: var(--text-primary);
+            line-height: 1.5;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 550px;
+            padding: 1rem 0; 
+        }
+
+        /* --- HERO / LOGO SECTION --- */
+        .header-container {
+            text-align: center;
+            margin-bottom: 2rem;
+            background-color: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+        }
+
+        .lab-logo {
+            width: 100%;
+            max-width: 320px; 
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .lab-tagline {
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-secondary);
+        }
+
+        /* --- SECTION TITLES --- */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin: 2rem 0 1rem 0;
+            background-color: var(--border-color);
+            color: var(--surface-color);
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            letter-spacing: 0.03em;
+        }
+
+        /* --- PRESENTATIONS / WORKS GRID --- */
+        .works-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .work-card {
+            background-color: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            position: relative;
+        }
+
+        .work-badge {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding: 0.15rem 0.5rem;
+            border: 1px solid var(--accent-color);
+        }
+
+        .work-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .work-authors {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            background-color: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: 3px 3px 0px var(--border-color);
+            transition: all 0.1s ease;
+            text-align: center;
+            margin-top: 0.25rem;
+        }
+
+        .action-btn:hover {
+            background-color: var(--border-color);
+            color: var(--surface-color);
+        }
+
+        .action-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px 0px var(--border-color);
+        }
+
+        .primary-btn {
+            border-color: var(--work-accent);
+            color: var(--work-accent);
+            box-shadow: 3px 3px 0px var(--work-accent);
+        }
+
+        .primary-btn:hover {
+            background-color: var(--work-accent);
+            color: #ffffff;
+        }
+
+        .primary-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px 0px var(--work-accent);
+        }
+
+        /* --- LAB OVERVIEW SECTION --- */
+        .about-section {
+            background-color: var(--surface-color);
+            border: 2px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .about-text {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        /* --- LAB PILLARS / TAGS --- */
+        .pillars-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .pillar-tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header-container">
+            <img src="LOGO-AMDUNIBO.png" alt="AMD Lab Logo" class="lab-logo">
+            <div class="lab-tagline">Advanced Materials & Design UniBo</div>
+        </div>
+
+        <div class="section-title">Presented Works</div>
+        
+        <div class="works-container">
+            
+            <div class="work-card">
+                <span class="work-badge">Presentation 1</span>
+                <h3 class="work-title">Title of the First Research Presentation Asset</h3>
+                <p class="work-authors">Presenter Name, A. Author, B. Author</p>
+                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            </div>
+
+            <div class="work-card">
+                <span class="work-badge">Presentation 2</span>
+                <h3 class="work-title">Title of the Second Research Presentation Asset</h3>
+                <p class="work-authors">Presenter Name, C. Author, D. Author</p>
+                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            </div>
+
+            <div class="work-card">
+                <span class="work-badge">Presentation 3</span>
+                <h3 class="work-title">Title of the Third Research Presentation Asset</h3>
+                <p class="work-authors">Presenter Name, E. Author, F. Author</p>
+                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            </div>
+
+            <div class="work-card">
+                <span class="work-badge">Presentation 4</span>
+                <h3 class="work-title">Title of the Fourth Research Presentation Asset</h3>
+                <p class="work-authors">Presenter Name, G. Author, H. Author</p>
+                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            </div>
+
+            <div class="work-card">
+                <span class="work-badge">Presentation 5</span>
+                <h3 class="work-title">Title of the Fifth Research Presentation Asset</h3>
+                <p class="work-authors">Presenter Name, I. Author, J. Author</p>
+                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            </div>
+
+        </div>
+
+        <div class="section-title">About AMD Lab</div>
+        
+        <div class="about-section">
+            <p class="about-text">
+                We develop multifunctional composite materials with novel properties and applications. We investigate electrospinning techniques in many fields, producing nanodevices for composite materials, artificial muscles, piezoelectric sensors, filtering protection and more.
+            </p>
+            <p class="about-text">
+                Our research involves designing and manufacturing composite structures, 3D printing, analytical modelling, finite element analysis, and material characterizations (mechanical, chemical, thermo-electro-mechanical, morphological).
+            </p>
+            
+            <div class="pillars-grid">
+                <span class="pillar-tag">Self-sensing Composites</span>
+                <span class="pillar-tag">Electrospun Artificial Muscles</span>
+                <span class="pillar-tag">Nanofiber Mats</span>
+                <span class="pillar-tag">Adaptive Stiffness Prosthetics</span>
+                <span class="pillar-tag">Hand Exoskeletons</span>
+                <span class="pillar-tag">3D Printed Electronics</span>
+            </div>
+
+            <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+                <a href="mailto:gregorio.pisaneschi@unibo.it" class="action-btn">✉️ Contact Lab Representatives</a>
+                <a href="https://www.unibo.it" target="_blank" class="action-btn">🌐 Institutional Website</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            Alma Mater Studiorum - Università di Bologna • 2026
+        </div>
+    </div>
+
+</body>
+</html>
