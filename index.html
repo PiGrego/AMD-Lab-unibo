@@ -5,28 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMD Lab | Conference Hub - University of Bologna</title>
     <style>
+        /* --- ULTRA-MODERN PREMIUM MINIMALIST PALETTE --- */
         :root {
-            --bg-color: #f1f5f9;
-            --surface-color: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #475569;
-            --accent-color: #4f46e5; /* Modern Indigo */
-            --accent-light: #e0e7ff;
-            --border-color: #0f172a;
-            --card-shadow: 4px 4px 0px var(--border-color);
-            --work-accent: #0e9f6e; /* Mint/Green for presentation highlights */
+            --bg-flat: #f8fafc;         
+            --surface: #ffffff;         
+            --text-main: #0f172a;       
+            --text-muted: #64748b;      
+            --border-subtle: #e2e8f0;   
+            
+            /* Refined, cohesive accent tones */
+            --accent-blue: #2563eb;     
+            --accent-purple: #7c3aed;   
+            --accent-gold: #d97706;     
+            --btn-hover-bg: #0f172a;
+            --btn-hover-text: #ffffff;
         }
 
         @media (prefers-color-scheme: dark) {
             :root {
-                --bg-color: #0f172a;
-                --surface-color: #1e293b;
-                --text-primary: #f8fafc;
-                --text-secondary: #94a3b8;
-                --accent-color: #818cf8;
-                --accent-light: rgba(129, 140, 248, 0.15);
-                --border-color: #f8fafc;
-                --card-shadow: 4px 4px 0px var(--border-color);
+                --bg-flat: #0b0f19;
+                --surface: #111827;
+                --text-main: #f9fafb;
+                --text-muted: #9ca3af;
+                --border-subtle: #1f2937;
+                
+                --accent-blue: #60a5fa;
+                --accent-purple: #a78bfa;
+                --accent-gold: #fbbf24;
+                --btn-hover-bg: #f9fafb;
+                --btn-hover-text: #111827;
             }
         }
 
@@ -37,61 +44,64 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-            background-color: var(--bg-color);
-            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='2' cy='2' r='1.2' fill='%239ca3af' fill-opacity='0.3'/%3E%3C/svg%3E");
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-flat);
+            color: var(--text-main);
             line-height: 1.5;
             display: flex;
             justify-content: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
             width: 100%;
-            max-width: 550px;
-            padding: 1rem 0; 
+            max-width: 480px;
         }
 
-        /* --- HERO / LOGO SECTION --- */
+        /* --- LOGO / HERO HEADER --- */
         .header-container {
             text-align: center;
-            margin-bottom: 2rem;
-            background-color: var(--surface-color);
-            border: 2px solid var(--border-color);
-            box-shadow: var(--card-shadow);
-            padding: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
         }
 
         .lab-logo {
             width: 100%;
-            max-width: 320px; 
+            max-width: 260px; 
             height: auto;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
 
         .lab-tagline {
-            font-size: 0.9rem;
+            font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-secondary);
+            letter-spacing: 0.12em;
+            color: var(--text-muted);
         }
 
-        /* --- SECTION TITLES --- */
+        /* --- SECTION ANCHORS --- */
         .section-title {
-            font-size: 1.1rem;
-            font-weight: 800;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            margin: 2rem 0 1rem 0;
-            background-color: var(--border-color);
-            color: var(--surface-color);
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            letter-spacing: 0.03em;
+            margin: 2.5rem 0 1rem 0;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        /* --- PRESENTATIONS / WORKS GRID --- */
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-subtle);
+        }
+
+        /* --- CARD ARCHITECTURE --- */
         .works-container {
             display: flex;
             flex-direction: column;
@@ -99,125 +109,157 @@
         }
 
         .work-card {
-            background-color: var(--surface-color);
-            border: 2px solid var(--border-color);
-            box-shadow: var(--card-shadow);
+            background-color: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
             padding: 1.25rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            position: relative;
+            gap: 0.6rem;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .work-badge {
-            align-self: flex-start;
+        .work-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+            border-color: var(--text-muted);
+        }
+
+        /* Pure subtle indicator states */
+        .card-blue { border-top: 3px solid var(--accent-blue); }
+        .card-purple { border-top: 3px solid var(--accent-purple); }
+        .card-gold { border-top: 3px solid var(--accent-gold); }
+
+        .work-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             font-size: 0.75rem;
-            font-weight: 800;
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 0.15rem 0.45rem;
+            border-radius: 6px;
+            font-size: 0.65rem;
             text-transform: uppercase;
-            background-color: var(--accent-light);
-            color: var(--accent-color);
-            padding: 0.15rem 0.5rem;
-            border: 1px solid var(--accent-color);
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+        .badge-blue { background-color: rgba(37, 99, 235, 0.08); color: var(--accent-blue); }
+        .badge-purple { background-color: rgba(124, 58, 237, 0.08); color: var(--accent-purple); }
+        .badge-gold { background-color: rgba(217, 119, 6, 0.08); color: var(--accent-gold); }
+
+        .work-schedule {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .work-session {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
         }
 
         .work-title {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            line-height: 1.3;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+            color: var(--text-main);
         }
 
         .work-authors {
             font-size: 0.85rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-weight: 500;
         }
 
+        /* --- PREMIUM BUTTON DESIGN --- */
         .action-btn {
-            display: flex;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.5rem;
-            padding: 0.75rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            color: var(--text-primary);
+            padding: 0.65rem 1rem;
+            font-weight: 600;
+            font-size: 0.85rem;
+            border-radius: 8px;
             text-decoration: none;
-            background-color: var(--surface-color);
-            border: 2px solid var(--border-color);
-            box-shadow: 3px 3px 0px var(--border-color);
-            transition: all 0.1s ease;
+            transition: all 0.15s ease-in-out;
             text-align: center;
-            margin-top: 0.25rem;
+            margin-top: 0.4rem;
+            border: 1px solid var(--border-subtle);
+            background-color: var(--surface);
+            color: var(--text-main);
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
         }
 
         .action-btn:hover {
-            background-color: var(--border-color);
-            color: var(--surface-color);
+            background-color: var(--btn-hover-bg);
+            color: var(--btn-hover-text);
+            border-color: var(--btn-hover-bg);
         }
 
-        .action-btn:active {
-            transform: translate(3px, 3px);
-            box-shadow: 0px 0px 0px var(--border-color);
-        }
+        /* Micro subtle text coloration to frame actions cleanly */
+        .btn-blue { color: var(--accent-blue); }
+        .btn-purple { color: var(--accent-purple); }
+        .btn-gold { color: var(--accent-gold); }
 
-        .primary-btn {
-            border-color: var(--work-accent);
-            color: var(--work-accent);
-            box-shadow: 3px 3px 0px var(--work-accent);
-        }
-
-        .primary-btn:hover {
-            background-color: var(--work-accent);
-            color: #ffffff;
-        }
-
-        .primary-btn:active {
-            transform: translate(3px, 3px);
-            box-shadow: 0px 0px 0px var(--work-accent);
-        }
-
-        /* --- LAB OVERVIEW SECTION --- */
+        /* --- ABOUT ARCHITECTURE --- */
         .about-section {
-            background-color: var(--surface-color);
-            border: 2px solid var(--border-color);
-            box-shadow: var(--card-shadow);
-            padding: 1.5rem;
-            margin-top: 1rem;
+            background-color: var(--surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
         }
 
         .about-text {
-            font-size: 0.95rem;
-            color: var(--text-primary);
+            font-size: 0.9rem;
+            color: var(--text-muted);
             margin-bottom: 1rem;
-            text-align: justify;
+            line-height: 1.5;
         }
 
-        /* --- LAB PILLARS / TAGS --- */
         .pillars-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
+            gap: 0.4rem;
+            margin-top: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
         .pillar-tag {
-            font-size: 0.8rem;
-            font-weight: 600;
-            background-color: var(--bg-color);
-            border: 1px solid var(--border-color);
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            background-color: var(--bg-flat);
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .secondary-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
         /* --- FOOTER --- */
         .footer {
-            margin-top: 3rem;
+            margin-top: 4rem;
             text-align: center;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
+            font-size: 0.7rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
+            letter-spacing: 0.06em;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -225,52 +267,80 @@
 
     <div class="container">
         
+        <!-- HEADER -->
         <div class="header-container">
             <img src="LOGO-AMDUNIBO.png" alt="AMD Lab Logo" class="lab-logo">
             <div class="lab-tagline">Advanced Materials & Design UniBo</div>
         </div>
 
+        <!-- PRESENTED WORKS -->
         <div class="section-title">Presented Works</div>
         
         <div class="works-container">
             
-            <div class="work-card">
-                <span class="work-badge">Presentation 1</span>
-                <h3 class="work-title">Title of the First Research Presentation Asset</h3>
-                <p class="work-authors">Presenter Name, A. Author, B. Author</p>
-                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            <!-- WORK 1 -->
+            <div class="work-card card-blue">
+                <div class="work-meta">
+                    <span class="badge badge-blue">ID: 1138</span>
+                    <span class="work-schedule">Monday • 15:45 (Session 3)</span>
+                </div>
+                <div class="work-session">SS11 · Advanced Composite Materials and Structures</div>
+                <h3 class="work-title">Capacitive Structural Health Monitoring of Hybrid Metal–Composite Joints</h3>
+                <p class="work-authors">C. Gotti et al.</p>
+                <a href="ECCM22_1138_Fullpaper_Gotti_Carlo.pdf" target="_blank" class="action-btn btn-blue">📂 View Paper / Poster</a>
             </div>
 
-            <div class="work-card">
-                <span class="work-badge">Presentation 2</span>
-                <h3 class="work-title">Title of the Second Research Presentation Asset</h3>
-                <p class="work-authors">Presenter Name, C. Author, D. Author</p>
-                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            <!-- WORK 2: Integrated Real Paper Data -->
+            <div class="work-card card-purple">
+                <div class="work-meta">
+                    <span class="badge badge-purple">ID: 1175</span>
+                    <span class="work-schedule">Monday • 16:00 (Session 3)</span>
+                </div>
+                <div class="work-session">Session 3 · Morphing Laminates & Smart Materials</div>
+                <h3 class="work-title">Elastomer-Interfaced SMA Hybrid Composites: Interface Enhancement, Analytical Modelling, and Manufacturability for Morphing Laminates</h3>
+                <p class="work-authors">G. Pisaneschi et al.</p>
+                <a href="ECCM22_1175_Fullpaper_Pisaneschi_Gregorio.pdf" target="_blank" class="action-btn btn-purple">📂 View Paper / Poster</a>
             </div>
 
-            <div class="work-card">
-                <span class="work-badge">Presentation 3</span>
-                <h3 class="work-title">Title of the Third Research Presentation Asset</h3>
-                <p class="work-authors">Presenter Name, E. Author, F. Author</p>
-                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            <!-- WORK 3 -->
+            <div class="work-card card-gold">
+                <div class="work-meta">
+                    <span class="badge badge-gold">ID: TBA</span>
+                    <span class="work-schedule">Schedule TBA</span>
+                </div>
+                <div class="work-session">Research Session Category</div>
+                <h3 class="work-title">Title of the Third Laboratory Research Presentation</h3>
+                <p class="work-authors">Presenter Name et al.</p>
+                <a href="#" target="_blank" class="action-btn btn-gold">📂 View Poster / Abstract</a>
             </div>
 
-            <div class="work-card">
-                <span class="work-badge">Presentation 4</span>
-                <h3 class="work-title">Title of the Fourth Research Presentation Asset</h3>
-                <p class="work-authors">Presenter Name, G. Author, H. Author</p>
-                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            <!-- WORK 4 -->
+            <div class="work-card card-blue">
+                <div class="work-meta">
+                    <span class="badge badge-blue">ID: TBA</span>
+                    <span class="work-schedule">Schedule TBA</span>
+                </div>
+                <div class="work-session">Research Session Category</div>
+                <h3 class="work-title">Title of the Fourth Laboratory Research Presentation</h3>
+                <p class="work-authors">Presenter Name et al.</p>
+                <a href="#" target="_blank" class="action-btn btn-blue">📂 View Poster / Abstract</a>
             </div>
 
-            <div class="work-card">
-                <span class="work-badge">Presentation 5</span>
-                <h3 class="work-title">Title of the Fifth Research Presentation Asset</h3>
-                <p class="work-authors">Presenter Name, I. Author, J. Author</p>
-                <a href="#" target="_blank" class="action-btn primary-btn">📂 View Poster / Abstract</a>
+            <!-- WORK 5 -->
+            <div class="work-card card-purple">
+                <div class="work-meta">
+                    <span class="badge badge-purple">ID: TBA</span>
+                    <span class="work-schedule">Schedule TBA</span>
+                </div>
+                <div class="work-session">Research Session Category</div>
+                <h3 class="work-title">Title of the Fifth Laboratory Research Presentation</h3>
+                <p class="work-authors">Presenter Name et al.</p>
+                <a href="#" target="_blank" class="action-btn btn-purple">📂 View Poster / Abstract</a>
             </div>
 
         </div>
 
+        <!-- ABOUT THE LAB -->
         <div class="section-title">About AMD Lab</div>
         
         <div class="about-section">
@@ -278,7 +348,7 @@
                 We develop multifunctional composite materials with novel properties and applications. We investigate electrospinning techniques in many fields, producing nanodevices for composite materials, artificial muscles, piezoelectric sensors, filtering protection and more.
             </p>
             <p class="about-text">
-                Our research involves designing and manufacturing composite structures, 3D printing, analytical modelling, finite element analysis, and material characterizations (mechanical, chemical, thermo-electro-mechanical, morphological).
+                Our research involves designing and manufacturing composite structures, 3D printing, analytical modelling, finite element analysis, and material characterizations.
             </p>
             
             <div class="pillars-grid">
@@ -290,12 +360,13 @@
                 <span class="pillar-tag">3D Printed Electronics</span>
             </div>
 
-            <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
+            <div class="secondary-links">
                 <a href="mailto:gregorio.pisaneschi@unibo.it" class="action-btn">✉️ Contact Lab Representatives</a>
                 <a href="https://www.unibo.it" target="_blank" class="action-btn">🌐 Institutional Website</a>
             </div>
         </div>
 
+        <!-- FOOTER -->
         <div class="footer">
             Alma Mater Studiorum - Università di Bologna • 2026
         </div>
